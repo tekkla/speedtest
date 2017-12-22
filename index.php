@@ -1,52 +1,39 @@
 <?php
-/*
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-*/
-
 require_once 'speedtest.php';
 
-// Download warning level (Mbit/s)
+// Name des gebuchten Tarifs
+$tarif = 'Vodafone Red 400';
+
+// Download warning level (MBit/s)
 $dlw = 200;
 
-// Download fail level (Mbit/s)
+// Download fail level (MBit/s)
 $dlf = 80;
 
-// Upload warning level (Mbit/s)
+// Upload warning level (MBit/s)
 $ulw = 10;
 
-// Upload fail level (Mbit/s)
+// Upload fail level (MBit/s)
 $ulf = 5;
+
 
 // Create speedtest
 $speedtest = new Speedtest(__DIR__ . '/logs', $dlw, $dlf, $ulw, $ulf);
-
 ?>
 
 <html>
 <head>
-<title>Speedtests</title>
+<title>Speedtests <?php echo $tarif; ?></title>
 <link href="bootstrap.css" rel="stylesheet">
 </head>
 
 <body>
 	<div class="container">
-		<h1 class="display-5 my-4">Speedtests Vodafone Red 400</h1>
+		<h1 class="display-5 my-4">Speedtests <?php echo $tarif; ?></h1>
 		<h3 class="mt-3">Einleitung</h3>
-		<p class="lead">Die nachfolgenden Speedtests werden in unterschiedlichen Abstände an den jeweiligen Servern ausgeführt. Es werden in der Regel mehrere Server abgefragt, damit ein kurzzeitiger Engpass an einem Server nicht das Ergebnis der gesamten Messung zu stark verfälschen kann.</p>
-		<p class="lead">Aus allen Speedtests wird der mit dem höchsten Downloadspeed für die Beurteilung herangezogen.</p>
-		<div class="row">
-			<div class="col-sm-4">
-				<p class="lead">Es werden folgende Farbcodierungen verwendet:</p>
-			</div>
-			<div class="col-sm">
-				<span class="text-success">Downloadspeed &gt; <?php echo $dlw; ?> MBit/s (success)</span> <br>
-				<span class="text-warning">Downloadspeed &lt; <?php echo $dlw; ?> MBit/s aber &gt; <?php echo $dlf; ?> MBit/s (Warn)</span> <br> 
-				<span class="text-danger">Downloadspeed &lt; <?php echo $dlf; ?> MBit/s (Fail)</span>
-			</div>
-		</div>
+		<p class="lead">Die nachfolgenden Speedtests werden in unterschiedlichen Abstände an den jeweiligen Servern ausgeführt. Es werden in der Regel mehrere Server abgefragt, damit ein kurzzeitiger Engpass an einem Server nicht das Ergebnis der gesamten Messung zu stark verfälschen kann. Aus allen Speedtests wird der mit dem höchsten Downloadspeed für die Beurteilung herangezogen.</p>
 		<h3 class="mt-3">Tests</h3>
+		<p><span class="text-success">Downloadspeed &gt; <?php echo $dlw; ?> MBit/s (success)</span> | <span class="text-warning">Downloadspeed &lt; <?php echo $dlw; ?> MBit/s aber &gt; <?php echo $dlf; ?> MBit/s (Warn)</span> | <span class="text-danger">Downloadspeed &lt; <?php echo $dlf; ?> MBit/s (Fail)</span></p>
 		<div id="accordion" role="tablist">
 		
 		<?php
@@ -126,8 +113,6 @@ $speedtest = new Speedtest(__DIR__ . '/logs', $dlw, $dlf, $ulw, $ulf);
 			<?php } ?>
 
 		</div>
-		<hr>
-		<small><?php echo date('Y-m-d H:i');?></small>
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
