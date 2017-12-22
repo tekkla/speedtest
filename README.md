@@ -1,6 +1,8 @@
 # speedtest
 Eine simple Auswertung von Logs im JSON Format über mehrere Server bei speedtest.net
 
+Diese Auswertung dient mir persönlich zur Dokumentation meiner aktuellen Probleme am Kabelinternetanschluss von Vodafone. Diese Auswertung berücksichtigt in aktueller nur den Downloadspeeds. Ich habe zwar schon die rudimentären Grundlagen für eine Uploadspeed-Aauswertung in den Speedtest-Klassen erstellt, greife dessen Daten bei der Auswertung aber nicht als Bewertungskriterium ab. Wer den Upload als Basis für die Auswertung braucht, der muss die Auswertungsdarstellung selber ändern. 
+
 ## speedtest.sh 
 Diese Datei enthält das Skript mit den auszuführenden Speedtests. Einfach als ausführbar markieren und dann per cronjob laufen lassen. Die möglichen Parameter sind in der Datei kommentiert,
 
